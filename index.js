@@ -1,18 +1,21 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const prefix = "j!";
+
 const token = "token";
 
 client.on('ready', () =>{
     console.log('Josh is now online! Type j! for help!');
+    client.user.setActivity(`${client.users.size} people | ${prefix}help`, {type: "WATCHING"});
 })
 
 client.login(token);
 
-const prefix = "!";
+
 
 client.on('message', msg=>{
-    if(msg.content ===  "!hi"){
+    if(msg.content ===  "j!hi"){
         msg.reply('Hi Im Josh!');
     }
 
