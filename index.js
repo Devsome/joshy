@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-require("./keepOnline.js");
+
 
 const token = "insert-token-here";
 
