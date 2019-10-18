@@ -21,20 +21,20 @@ bot.on('message', msg=>{
     let author = message.member;
     let role = message.guild.role.find('name', "Doggo")
     if(author.role.has(role.id)){
-        if(!args[0]){
+        if(!args){
             message.delete();
-            message.author.send("No arguments given");
+            message.channel.send("No arguments given");
             return;
         }
         if(args[0] > 100){
             message.delete();
-            message.author.send("Maxiumum is 100 messages at once.");
+            message.channel.send("Maxiumum is 100 messages at once.");
             return;
         }
 
         message.delete();
-        message.channel.bulkDelete(args[0]);
-        message.author.send("Done! I deleted" + args[0] + " messages.");
+        message.channel.bulkDelete(args);
+        message.channel.send("Done! I deleted" + args[0] + " messages.");
         return;
         }
     }
