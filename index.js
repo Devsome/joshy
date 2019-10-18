@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const token = 'Nah FAM';
+const token = 'insert-token-here';
 
 bot.on('ready', () =>{
     console.log('Josh is now online! Type j! for help!');
