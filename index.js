@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-
-
-const token = "insert-token-here";
+const token = "token";
 
 client.on('ready', () =>{
     console.log('Josh is now online! Type j! for help!');
@@ -21,23 +19,22 @@ client.on('message', msg=>{
     if(msg.content.startsWith(prefix +"prune")){
     let args = msg.content.split(" ").slice(1);
     let author = msg.member;
-    let role = msg.guild.role.find('name', "Doggo")
-    if(author.role.has(role.id)){
-        if(!args){
+    if(msg.member.hasPermission("MANAGE_MESSAGES")){
+        if(!args[0]){
             msg.delete();
             msg.channel.send("No arguments given");
             return;
         }
         if(args[0] > 100){
             msg.delete();
-            msg.channel.send("Maxiumum is 100 messages at once.");
+            msg.channel.send("I can only delete up to 100 messages at a time!");
             return;
         }
 
-        msg.delete();
-        msg.channel.bulkDelete(args);
-        msg.channel.send("Done! I deleted" + args[0] + " messages.");
-        return;
+  const arga = parseInt(args.join(" "));
+    msg.channel.fetchMessages({
+      limit: arga
+    }).then(messages => msg.channel.bulkDelete(messages));
         }
     }
 })
